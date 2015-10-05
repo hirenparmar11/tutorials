@@ -1,0 +1,83 @@
+bean scopes
+- singleton
+- prototype
+- global session
+- session
+- request
+
+bean lifecycle
+- bean init-method
+-- <bean id="exampleBean" class="examples.ExampleBean" init-method="init"/>
+- bean destroy-method
+-- <bean id="exampleBean" class="examples.ExampleBean" destroy-method="destroy"/>
+- for multiple beans having init and destroy methods
+-- <beans ....xsd" default-init-method="init" default-destroy-method="destroy">
+
+bean post-processor
+- a bean class implements BeanPostProcessor and have a bean definition in XML
+
+bean inheritance
+- having a parent attribute
+-- <bean id="helloIndia" class="com.tutorialspoint.HelloIndia" parent="helloWorld">
+
+dependency injection
+-public class TextEditor {
+   private SpellChecker spellChecker;
+   
+   public TextEditor() {
+      spellChecker = new SpellChecker();
+   }
+}
+-public class TextEditor {
+   private SpellChecker spellChecker;
+   
+   public TextEditor(SpellChecker spellChecker) {
+      this.spellChecker = spellChecker;
+   }
+}
+-constructor based
+-setter based	
+
+
+inner beans
+- <bean id="outerBean" class="..."> <property name="target"> <bean id="innerBean" class="..."/> </property> </bean>
+
+injecting collections
+- list
+<property name="addressList">
+         <list>
+            <value>INDIA</value>
+            <value>UK</value>
+            <value>Australia</value>
+            <value>USA</value>
+         </list>
+      </property>	
+- set (injecting references in bean)
+		<set>
+            <ref bean="address1"/>
+            <ref bean="address2"/>
+            <value>Pakistan</value>
+         </set>
+- map
+		<map>
+            <entry key="1" value="INDIA"/>
+            <entry key="2" value="Pakistan"/>
+            <entry key="3" value="USA"/>
+            <entry key="4" value="USA"/>
+         </map>
+- property
+		<props>
+            <prop key="one">INDIA</prop>
+            <prop key="two">Pakistan</prop>
+            <prop key="three">USA</prop>
+            <prop key="four">USA</prop>
+         </props>
+		 
+autowiring
+- http://www.tutorialspoint.com/spring/spring_beans_autowiring.htm
+- modes
+-- no autowiring - default
+-- byname
+-- bytype
+-- constructor
+-- autodetect
