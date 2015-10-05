@@ -2,3 +2,9 @@ annotations
 - @Required
 - @Autowired
 - @Qualifier
+
+bean life-cycle
+- @Bean(initMethod = "init", destroyMethod = "cleanup" )
+
+bean scope
+- @Scope("prototype")
