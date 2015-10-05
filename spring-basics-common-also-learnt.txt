@@ -1,0 +1,43 @@
+spring events
+- Application Context Events
+-- ContextRefreshedEvent
+-- ContextStartedEvent
+-- ContextStoppedEvent
+-- ContextClosedEvent
+-- RequestHandledEvent
+-- public class SomeHandler implements ApplicationListener<ContextStartedEvent>
+-- Custom Events
+--- public class CustomEvent extends ApplicationEvent
+--- public class CustomEventPublisher implements ApplicationEventPublisherAware
+--- public class CustomEventHandler 
+   implements ApplicationListener<CustomEvent> {
+		public void onApplicationEvent(CustomEvent event) {
+			System.out.println(event.toString());
+		}
+	}
+--- whenever or on whatever action, we need to publish this CustomEvent, need to get instance of this object, and use publish method
+--- public class MainApp {
+		public static void main(String[] args) {
+		ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+		CustomEventPublisher cvp = (CustomEventPublisher) context.getBean("customEventPublisher");
+		cvp.publish();
+		}
+	}
+	
+Spring JDBC Template
+- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> <property name="driverClassName" ... "url" ... "username" ... "password" value=""/> </bean>
+- int rowCount = jdbcTemplateObject.queryForInt( SQL );
+- long rowCount = jdbcTemplateObject.queryForLong( SQL );
+- String SQL = "select age from Student where id = ?"; int age = jdbcTemplateObject.queryForInt(SQL, new Object[]{10});
+- String name = jdbcTemplateObject.queryForObject(SQL, new Object[]{10}, String.class);
+- Student student = jdbcTemplateObject.queryForObject(SQL, new Object[]{10}, new StudentMapper()); StudentMapper implements RowMapper<Student> 
+- List<Student> students = jdbcTemplateObject.query(SQL, new StudentMapper());
+- String SQL = "insert into Student (name, age) values (?, ?)"; jdbcTemplateObject.update( SQL, new Object[]{"Zara", 11} );
+- String SQL = "update Student set name = ? where id = ?"; jdbcTemplateObject.update( SQL, new Object[]{"Zara", 10} );
+- String SQL = "delete Student where id = ?"; jdbcTemplateObject.update( SQL, new Object[]{20} );
+
+Transaction Management - <SKIPPED>
+
+
+
+
