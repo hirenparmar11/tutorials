@@ -1,0 +1,4 @@
+annotations
+- @Required
+- @Autowired
+- @Qualifier
