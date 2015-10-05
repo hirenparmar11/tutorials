@@ -7,6 +7,8 @@ RemoteSystemsTempFiles
 Servers
 spring-init
 SWS
+spring-jpa-hibernate-example
+spring-jpa-hibernate
 *.class
 
 # Mobile Tools for Java (J2ME)
