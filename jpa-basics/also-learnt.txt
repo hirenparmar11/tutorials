@@ -3,3 +3,6 @@ Executing OpenJPA with J2SE
 - above piece, didnt had complete solution, got to know from various threads, I need to use only jpa-all jar (openjpa javaagent agent library failed to init: instrument) https://mail-archives.apache.org/mod_mbox/openjpa-users/200707.mbox/%3C6C6A0915-9597-449B-B4E3-396703F4C391@SUN.com%3E
 - after this I had issue with versioning (java.lang.VerifyError: Expecting a stackmap frame at branch target 76'java.lang.VerifyError: Expecting a stackmap frame at branch target 76')
 hence used the latest version of jpa-all.jar
+
+Persistence Class
+- The work of the Persistence class is pretty simple: In the classpath resources, the Persistence class searches for javax.persistence.spi.PersistenceProvider. It reads the PersistenceProvider implementation class names from each file. It then calls createEntityManagerFactory() on each PersistenceProvider with the persistenceUnitName until it gets a an EntityManagerFactory back that isn't null. The provider name for OpenJPA is org.apache.openjpa.persistence.PersistenceProviderImpl. How does PersistenceProvider get the right EntityManagerFactory? This is up to the vendor to implement.
