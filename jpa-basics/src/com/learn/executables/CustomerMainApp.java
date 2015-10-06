@@ -16,8 +16,8 @@ public class CustomerMainApp {
 	    
 	    userTransaction.begin();
 	    Customer customer = new Customer();
-	    customer.setFirstName("Charles");
-	    customer.setLastName("Dickens");
+	    customer.setFirstName("Douglas");
+	    customer.setLastName("Wells");
 	    customer.setCustType("RETAIL");
 	    customer.setStreet("10 Downing Street");
 	    customer.setAppt("1");

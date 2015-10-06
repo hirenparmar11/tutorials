@@ -7,21 +7,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Version;
 
 @Entity(name = "CUSTOMER")
+@IdClass(CustomerNameIdentity.class)
 public class Customer {
 
-	@Id
+//	@Id
 	@Column(name = "CUST_ID", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long custId;
 
+	@Id
 	@Column(name = "FIRST_NAME", nullable = false, length = 50)
 	private String firstName;
 
+	@Id
 	@Column(name = "LAST_NAME", length = 50)
 	private String lastName;
+	
 	private String street;
 
 	@Column(name = "APPT", nullable = false)
