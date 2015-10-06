@@ -1,0 +1,5 @@
+Executing OpenJPA with J2SE
+- using a javaagent:<path to openjpa jar> http://stackoverflow.com/questions/24994216/exception-regarding-runtime-optimization-using-openjpa-mysql 
+- above piece, didnt had complete solution, got to know from various threads, I need to use only jpa-all jar (openjpa javaagent agent library failed to init: instrument) https://mail-archives.apache.org/mod_mbox/openjpa-users/200707.mbox/%3C6C6A0915-9597-449B-B4E3-396703F4C391@SUN.com%3E
+- after this I had issue with versioning (java.lang.VerifyError: Expecting a stackmap frame at branch target 76'java.lang.VerifyError: Expecting a stackmap frame at branch target 76')
+hence used the latest version of jpa-all.jar
