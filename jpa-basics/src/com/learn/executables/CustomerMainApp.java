@@ -10,7 +10,7 @@ import com.learn.intermediate.jpa.Customer;
 public class CustomerMainApp {
 
 	public static void main(String[] args) {
-	    EntityManagerFactory entityManagerFactory =  Persistence.createEntityManagerFactory("customerpu");
+	    EntityManagerFactory entityManagerFactory =  Persistence.createEntityManagerFactory("mysql-testpu");
 	    EntityManager em = entityManagerFactory.createEntityManager();
 	    EntityTransaction userTransaction = em.getTransaction();
 	    
