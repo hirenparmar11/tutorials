@@ -40,6 +40,7 @@ public class Invoice {
     @Column(name = "LAST_UPDATED_TIME")
     private Date updatedTime;
     
+    //false for inner join, true for outer
     @OneToOne(optional=false)
     @JoinColumn(name = "ORDER_ID") 
     private Order order;
