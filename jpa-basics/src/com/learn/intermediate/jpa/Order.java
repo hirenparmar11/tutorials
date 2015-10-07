@@ -33,6 +33,11 @@ public class Order {
     @Column(name = "ORDER_DATE")  
     private Date orderDt;
 
+    //optional - join (true - inner, false - outer)
+    //mappedBy - order field of 'targetEntity' Invoice
+    //cascade - any operation like insert, update, delete on this entity
+    //also cascades to do same for its joining entity
+    //ALL, REFRESH(update), PERSIST(insert), REMOVE(delete) are options
     @OneToOne(optional=false,cascade=CascadeType.ALL, 
     mappedBy="order",targetEntity=Invoice.class)
     private Invoice invoice;
