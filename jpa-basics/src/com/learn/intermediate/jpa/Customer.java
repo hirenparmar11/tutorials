@@ -1,29 +1,30 @@
 package com.learn.intermediate.jpa;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 @Entity(name = "CUSTOMER")
-@IdClass(CustomerNameIdentity.class)
 public class Customer {
 
-//	@Id
+	@Id
 	@Column(name = "CUST_ID", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long custId;
 
-	@Id
 	@Column(name = "FIRST_NAME", nullable = false, length = 50)
 	private String firstName;
 
-	@Id
 	@Column(name = "LAST_NAME", length = 50)
 	private String lastName;
 	
@@ -36,12 +37,16 @@ public class Customer {
 	@Column(name = "ZIP_CODE", nullable = false)
 	private String zipCode;
 
-	@Column(name = "CUST_TYPE", length = 10)
-	private String custType;
+//	@Column(name = "CUST_TYPE", length = 10)
+//	private String custType;
 
 	@Version
 	@Column(name = "LAST_UPDATED_TIME")
 	private Date updatedTime;
+	
+	//fetch - FetchType EAGER or LAZY 
+	@OneToMany(mappedBy="customer", targetEntity=Order.class, fetch=FetchType.EAGER)
+	private Collection<Order> orders;
 
 	public long getCustId() {
 		return custId;
@@ -99,13 +104,13 @@ public class Customer {
 		this.zipCode = zipCode;
 	}
 
-	public String getCustType() {
-		return custType;
-	}
-
-	public void setCustType(String custType) {
-		this.custType = custType;
-	}
+//	public String getCustType() {
+//		return custType;
+//	}
+//
+//	public void setCustType(String custType) {
+//		this.custType = custType;
+//	}
 
 	public Date getUpdatedTime() {
 		return updatedTime;
@@ -113,5 +118,18 @@ public class Customer {
 
 	public void setUpdatedTime(Date updatedTime) {
 		this.updatedTime = updatedTime;
+	}
+	
+	public Collection<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Collection<Order> orders) {
+		this.orders = orders;
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
 	}
 }
