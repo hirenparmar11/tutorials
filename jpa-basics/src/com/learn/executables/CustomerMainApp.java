@@ -12,19 +12,23 @@ public class CustomerMainApp {
 	public static void main(String[] args) {
 	    EntityManagerFactory entityManagerFactory =  Persistence.createEntityManagerFactory("mysql-testpu");
 	    EntityManager em = entityManagerFactory.createEntityManager();
-	    EntityTransaction userTransaction = em.getTransaction();
 	    
-	    userTransaction.begin();
-	    Customer customer = new Customer();
-	    customer.setFirstName("Douglas");
-	    customer.setLastName("Wells");
-	    customer.setCustType("RETAIL");
-	    customer.setStreet("10 Downing Street");
-	    customer.setAppt("1");
-	    customer.setCity("NewYork");
-	    customer.setZipCode("12345");
-	    em.persist(customer);
-	    userTransaction.commit();
+//	    EntityTransaction userTransaction = em.getTransaction();
+//	    userTransaction.begin();
+//	    Customer customer = new Customer();
+//	    customer.setFirstName("Douglas");
+//	    customer.setLastName("Wells");
+////	    customer.setCustType("RETAIL");
+//	    customer.setStreet("10 Downing Street");
+//	    customer.setAppt("1");
+//	    customer.setCity("NewYork");
+//	    customer.setZipCode("12345");
+//	    em.persist(customer);
+//	    userTransaction.commit();
+	    
+	    Customer customer = em.find(Customer.class, 100);
+	    System.out.println("Order details for customer 100 : " + customer.getOrders());
+	    
 	    em.close();
 	    entityManagerFactory.close();
 	}
