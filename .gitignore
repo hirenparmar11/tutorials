@@ -9,6 +9,8 @@ spring-init
 SWS
 spring-jpa-hibernate-example
 spring-jpa-hibernate
+jpa-basics/src/META-INF/persistence.xml
+jpa-basics/src/com/learn/executables/CustomerMainApp.java
 *.class
 
 # Mobile Tools for Java (J2ME)
